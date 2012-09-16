@@ -1,9 +1,9 @@
 # SimpleGCM
 ## A lightweight gem for using Google Cloud Messaging from Ruby
 
-All functionality is received through one method, `notify`. SimpleGCM does not implement retrying or exponential backoff, you can implement those yourself if you want them.
+All sending is done through one method, `notify`. SimpleGCM does not implement retrying or exponential backoff, you can implement those yourself if you want them.
 
-Notify takes an `array` of registration ids or a single registration id as a `string`.
+Notify takes an `array` of registration ids or a single registration id as a `string`. You should check the returned errors and check for updated registration ids.
 
 ```ruby
   response = SimpleGCM.notify registration_ids, 
