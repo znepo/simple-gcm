@@ -63,7 +63,7 @@ module SimpleGCM
     end
 
     def errors?
-      self.http_response.code != '200' || self.data[:failures] != 0
+      self.http_response.code != '200' || self.data[:success] != 1
     end
 
     def results
@@ -80,7 +80,7 @@ module SimpleGCM
 
     def each_registration_id
       @results.each_key do |old_id|
-        result = @results[key]
+        result = @results[old_id]
         new_id = result[:registration_id]
         yield old_id, new_id if new_id
       end
